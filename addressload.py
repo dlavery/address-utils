@@ -6,9 +6,12 @@ from addressutils import paf_to_lines
 from addressutils import phonetic
 
 def setup(db):
-    db.addresses.create_index([('phonetic', 1)], unique=False, sparse=True)
-    db.addresses.create_index([('postcode', 1)], unique=False, sparse=True)
-    db.addresses.create_index([('UDPRN', 1)], unique=True, sparse=True)
+    INDEX_ASCENDING = 1
+    INDEX_DESCENDING = -1
+
+    db.addresses.create_index([('phonetic', INDEX_ASCENDING)], unique=False, sparse=True)
+    db.addresses.create_index([('postcode', INDEX_ASCENDING)], unique=False, sparse=True)
+    db.addresses.create_index([('UDPRN', INDEX_ASCENDING)], unique=True, sparse=True)
 
 if __name__ == '__main__':
     config = configparser.ConfigParser()
